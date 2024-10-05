@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+</head>
+<body>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 12px;
+}
+
+ul {
+    margin-top: 20px;
+}
+
+li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+li button {
+    margin-left: 10px;
+    color: red;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+    </style>
+    <script>
+        // Function to add a task
+function addTask() {
+    const taskInput = document.getElementById('taskInput').value;
+
+    if (taskInput !== "") {
+        const li = document.createElement('li');
+        li.innerHTML = `${taskInput} <button onclick="removeTask(this)">Remove</button>`;
+
+        document.getElementById('taskList').appendChild(li);
+
+        document.getElementById('taskInput').value = '';
+    } else {
+        alert('Please enter a task.');
+    }
+}
+
+// Function to remove a task
+function removeTask(taskElement) {
+    taskElement.parentElement.remove();
+}
+
+    </script>
+    <h1>To-Do List</h1>
+
+    <!-- Input for tasks -->
+    <input type="text" id="taskInput" placeholder="New task" />
+    <button onclick="addTask()">Add Task</button>
+
+    <!-- List of tasks -->
+    <ul id="taskList">
+        <!-- Tasks will appear here -->
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
